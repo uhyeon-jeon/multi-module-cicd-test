@@ -1,0 +1,33 @@
+plugins {
+    // Java Application
+    id 'java'
+
+}
+
+version = '0.1.0'
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    implementation project(':module-common')
+    implementation project(':module-sub-websocket')
+
+}
+
+test {
+    useJUnitPlatform()
+}
+
+// app
+bootJar {
+    enabled = true
+    archiveFileName = "module-websocket.jar"
+}
+jar {
+    enabled = false
+}
+bootRun {
+    enabled = true
+}

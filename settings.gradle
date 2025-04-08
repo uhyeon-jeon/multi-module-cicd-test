@@ -1,0 +1,7 @@
+rootProject.name = 'demo'
+include 'module-common'
+include 'module-rest'
+include 'module-websocket'
+include 'module-sub-rest'
+include 'module-sub-websocket'
+
