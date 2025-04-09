@@ -13,22 +13,25 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: ready
-
+        id : changed-files
         run: |
-          echo "ready"
-          echo $(github.event.head_commit.modified)
+          CHANGED_FILES=$(git diff --name-only HEAD^ HEAD)
+          echo "changed_files=$CHANGED_FILES" >> $GITHUB_ENV
+      - name: check
+        run: |
+          echo "${{ env.changed-files }}"
       - name: Trigger Jenkins Job for Module A
-        if: ${{ contains(github.event.head_commit.modified, 'src/module-rest/')
-          || contains(github.event.head_commit.modified, 'src/module-sub-rest/')
-          || contains(github.event.head_commit.modified, 'src/module-common/')
-          || contains(github.event.head_commit.modified, '.github/')
-          || contains(github.event.head_commit.modified, 'gradle/')
-          || contains(github.event.head_commit.modified, 'gitattributes')
-          || contains(github.event.head_commit.modified, '.gitignore')
-          || contains(github.event.head_commit.modified, 'build.gradle')
-          || contains(github.event.head_commit.modified, 'gradlew')
-          || contains(github.event.head_commit.modified, 'gradlew.bat')
-          || contains(github.event.head_commit.modified, 'settings.gradle') }}
+        if: ${{ contains(env.changed-files, 'src/module-rest/')
+          || contains(env.changed-files, 'src/module-sub-rest/')
+          || contains(env.changed-files, 'src/module-common/')
+          || contains(env.changed-files, '.github/')
+          || contains(env.changed-files, 'gradle/')
+          || contains(env.changed-files, 'gitattributes')
+          || contains(env.changed-files, '.gitignore')
+          || contains(env.changed-files, 'build.gradle')
+          || contains(env.changed-files, 'gradlew')
+          || contains(env.changed-files, 'gradlew.bat')
+          || contains(env.changed-files, 'settings.gradle') }}
         uses: appleboy/jenkins-action@master
         with:
           url: "https://jenkins-ci-3s6ma465.autowini.com/"
