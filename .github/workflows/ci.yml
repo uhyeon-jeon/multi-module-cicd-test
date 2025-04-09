@@ -43,17 +43,17 @@ jobs:
           token: "11522bf1954299cbb35df9b8c333ed4d89"
           job: "multi-module-test"
       - name: Trigger Jenkins Job for Module B
-        if: ${{ contains(github.event.head_commit.modified, 'src/module-websocket/')
-          || contains(github.event.head_commit.modified, 'src/module-sub-socket/')
-          || contains(github.event.head_commit.modified, 'src/module-common/')
-          || contains(github.event.head_commit.modified, '.github/')
-          || contains(github.event.head_commit.modified, 'gradle/')
-          || contains(github.event.head_commit.modified, 'gitattributes')
-          || contains(github.event.head_commit.modified, '.gitignore')
-          || contains(github.event.head_commit.modified, 'build.gradle')
-          || contains(github.event.head_commit.modified, 'gradlew')
-          || contains(github.event.head_commit.modified, 'gradlew.bat')
-          || contains(github.event.head_commit.modified, 'settings.gradle') }}
+        if: ${{ contains(env.changed_files, 'src/module-websocket/')
+          || contains(env.changed_files, 'src/module-sub-socket/')
+          || contains(env.changed_files, 'src/module-common/')
+          || contains(env.changed_files, '.github/')
+          || contains(env.changed_files, 'gradle/')
+          || contains(env.changed_files, 'gitattributes')
+          || contains(env.changed_files, '.gitignore')
+          || contains(env.changed_files, 'build.gradle')
+          || contains(env.changed_files, 'gradlew')
+          || contains(env.changed_files, 'gradlew.bat')
+          || contains(env.changed_files, 'settings.gradle') }}
         uses: appleboy/jenkins-action@master
         with:
           url: "https://jenkins-ci-3s6ma465.autowini.com/"
