@@ -18,13 +18,32 @@ on:
       - 'settings.gradle'
 
 jobs:
-  trigger-jenkins:
+  trigger-module-rest: # moduleA 혹은 moduleC 에 변경사항이 발생한 경우
+#    rules:
     runs-on: ubuntu-latest
     steps:
-      - name: Trigger Jenkins Job
+      - if: ${{ contains(github.event.head_commit.modified, 'src/module-rest/')
+          || contains(github.event.head_commit.modified, 'src/module-sub-rest/')
+          || contains(github.event.head_commit.modified, '*')
+          || contains(github.event.head_commit.modified, 'src/module-common/') }}
+      - name: Trigger Jenkins Job for Module A
         uses: appleboy/jenkins-action@master
         with:
-          url: "https://jenkins-ci-3s6ma465.autowini.com"
-          user: "uhyeon.jeon"
-          token: "11522bf1954299cbb35df9b8c333ed4d89"
-          job: "multi-module-test"
+          url: "http://14.32.67.117:8080"
+          user: "admin"
+          token: "118cc157c3712b776f256de09c9aba5c17"
+          job: "test-multi-module-rest"
+    trigger-module-websocket: # moduleB 혹은 moduleC에 변경사항이 발생한 경우
+      runs-on: ubuntu-latest
+      steps:
+        - if: ${{ contains(github.event.head_commit.modified, 'src/module-websocket/')
+            || contains(github.event.head_commit.modified, 'src/module-sub-socket/')
+            || contains(github.event.head_commit.modified, '*')
+            || contains(github.event.head_commit.modified, 'src/module-common/') }}
+        - name: Trigger Jenkins Job for Module B
+          uses: appleboy/jenkins-action@master
+          with:
+            url: "http://14.32.67.117:8080"
+            user: "admin"
+            token: "118cc157c3712b776f256de09c9aba5c17"
+            job: "test-multi-module-websocket"
