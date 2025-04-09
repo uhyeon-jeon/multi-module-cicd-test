@@ -23,9 +23,9 @@ jobs:
         run: |
           echo "${{ env.changed_files }}"
       - name: Trigger Jenkins Job for Module A
-        if: ${{ contains(env.changed_files, 'src/module-rest/')
-          || contains(env.changed_files, 'src/module-sub-rest/')
-          || contains(env.changed_files, 'src/module-common/')
+        if: ${{ contains(env.changed_files, 'module-rest/')
+          || contains(env.changed_files, 'module-sub-rest/')
+          || contains(env.changed_files, 'module-common/')
           || contains(env.changed_files, '.github/')
           || contains(env.changed_files, 'gradle/')
           || contains(env.changed_files, 'gitattributes')
@@ -41,9 +41,9 @@ jobs:
           token: "11522bf1954299cbb35df9b8c333ed4d89"
           job: "multi-module-test"
       - name: Trigger Jenkins Job for Module B
-        if: ${{ contains(env.changed_files, 'src/module-websocket/')
-          || contains(env.changed_files, 'src/module-sub-socket/')
-          || contains(env.changed_files, 'src/module-common/')
+        if: ${{ contains(env.changed_files, 'module-websocket/')
+          || contains(env.changed_files, 'module-sub-socket/')
+          || contains(env.changed_files, 'module-common/')
           || contains(env.changed_files, '.github/')
           || contains(env.changed_files, 'gradle/')
           || contains(env.changed_files, 'gitattributes')
