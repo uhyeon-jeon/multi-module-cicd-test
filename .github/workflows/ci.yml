@@ -17,7 +17,7 @@ jobs:
         with:
           fetch-depth: 2 # 직전 커밋까지 가져오기
       - name: ready
-        id : changed-files
+        id : changed_files
         run: |
           CHANGED_FILES=$(git diff --name-only HEAD^ HEAD)
           echo "changed_files=$CHANGED_FILES" >> $GITHUB_ENV
@@ -25,17 +25,17 @@ jobs:
         run: |
           echo "${{ env.changed_files }}"
       - name: Trigger Jenkins Job for Module A
-        if: ${{ contains(env.changed-files, 'src/module-rest/')
-          || contains(env.changed-files, 'src/module-sub-rest/')
-          || contains(env.changed-files, 'src/module-common/')
-          || contains(env.changed-files, '.github/')
-          || contains(env.changed-files, 'gradle/')
-          || contains(env.changed-files, 'gitattributes')
-          || contains(env.changed-files, '.gitignore')
-          || contains(env.changed-files, 'build.gradle')
-          || contains(env.changed-files, 'gradlew')
-          || contains(env.changed-files, 'gradlew.bat')
-          || contains(env.changed-files, 'settings.gradle') }}
+        if: ${{ contains(env.changed_files, 'src/module-rest/')
+          || contains(env.changed_files, 'src/module-sub-rest/')
+          || contains(env.changed_files, 'src/module-common/')
+          || contains(env.changed_files, '.github/')
+          || contains(env.changed_files, 'gradle/')
+          || contains(env.changed_files, 'gitattributes')
+          || contains(env.changed_files, '.gitignore')
+          || contains(env.changed_files, 'build.gradle')
+          || contains(env.changed_files, 'gradlew')
+          || contains(env.changed_files, 'gradlew.bat')
+          || contains(env.changed_files, 'settings.gradle') }}
         uses: appleboy/jenkins-action@master
         with:
           url: "https://jenkins-ci-3s6ma465.autowini.com/"
