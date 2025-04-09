@@ -17,7 +17,7 @@ jobs:
       - name: ready
         id : changed_files
         run: |
-          CHANGED_FILES=$(git diff --name-only HEAD^ HEAD)
+          CHANGED_FILES=$(git diff --name-only HEAD^1 HEAD)
           echo "changed_files=$CHANGED_FILES" >> $GITHUB_ENV
       - name: check
         run: |
