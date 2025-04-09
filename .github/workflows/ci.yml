@@ -23,7 +23,7 @@ jobs:
           echo "changed_files=$CHANGED_FILES" >> $GITHUB_ENV
       - name: check
         run: |
-          echo "${{ env.changed-files }}"
+          echo "${{ env.changed_files }}"
       - name: Trigger Jenkins Job for Module A
         if: ${{ contains(env.changed-files, 'src/module-rest/')
           || contains(env.changed-files, 'src/module-sub-rest/')
