@@ -31,4 +31,4 @@ jobs:
           url: "http://14.32.67.117:8080"
           user: "admin"
           token: "test"
-          job: "my-pipeline-job"
+          job: "multi-module-test"
