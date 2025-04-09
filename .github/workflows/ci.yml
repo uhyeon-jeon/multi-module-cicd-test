@@ -36,10 +36,10 @@ jobs:
           || contains(github.event.head_commit.modified, 'settings.gradle') }}
         uses: appleboy/jenkins-action@master
         with:
-          url: "http://14.32.67.117:8080"
-          user: "admin"
-          token: "118cc157c3712b776f256de09c9aba5c17"
-          job: "test-multi-module-rest"
+          url: "https://jenkins-ci-3s6ma465.autowini.com/"
+          user: "uhyeon.jeon"
+          token: "11522bf1954299cbb35df9b8c333ed4d89"
+          job: "multi-module-test"
       - name: Trigger Jenkins Job for Module B
         if: ${{ contains(github.event.head_commit.modified, 'src/module-websocket/')
           || contains(github.event.head_commit.modified, 'src/module-sub-socket/')
@@ -54,7 +54,7 @@ jobs:
           || contains(github.event.head_commit.modified, 'settings.gradle') }}
         uses: appleboy/jenkins-action@master
         with:
-          url: "http://14.32.67.117:8080"
-          user: "admin"
-          token: "118cc157c3712b776f256de09c9aba5c17"
-          job: "test-multi-module-websocket"
+          url: "https://jenkins-ci-3s6ma465.autowini.com/"
+          user: "uhyeon.jeon"
+          token: "11522bf1954299cbb35df9b8c333ed4d89"
+          job: "multi-module-test"
