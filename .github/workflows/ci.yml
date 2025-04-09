@@ -1,0 +1,34 @@
+name: CI/CD Pipeline
+
+on:
+  push:
+    branches:
+      - main
+    paths:
+      - 'module-common/**'
+      - 'module-rest/**'
+      - 'module-sub-rest/**'
+      - '.github/**'
+      - 'gradle/**'
+      - '.gitattributes'
+      - '.gitignore'
+      - 'build.gradle'
+      - 'gradlew'
+      - 'gradlew.bat'
+      - 'settings.gradle'
+
+jobs:
+  trigger-jenkins:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Trigger Jenkins Job
+        uses: appleboy/jenkins-action@master
+        with:
+#          url: ${{ secrets.JENKINS_URL }}
+#          user: ${{ secrets.JENKINS_USER }}
+#          token: ${{ secrets.JENKINS_TOKEN }}
+#          job: "my-pipeline-job"
+          url: "http://14.32.67.117:8080"
+          user: "admin"
+          token: "test"
+          job: "my-pipeline-job"
