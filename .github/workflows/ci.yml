@@ -26,5 +26,5 @@ jobs:
         with:
           url: "https://jenkins-ci-3s6ma465.autowini.com"
           user: "uhyeon.jeon"
-          token: "multi-module-test"
+          token: "11522bf1954299cbb35df9b8c333ed4d89"
           job: "multi-module-test"
