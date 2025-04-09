@@ -4,24 +4,19 @@ on:
   push:
     branches:
       - main
-    paths:
-      - 'module-common/**'
-      - 'module-rest/**'
-      - 'module-sub-rest/**'
-      - '.github/**'
-      - 'gradle/**'
-      - '.gitattributes'
-      - '.gitignore'
-      - 'build.gradle'
-      - 'gradlew'
-      - 'gradlew.bat'
-      - 'settings.gradle'
+
+
 
 jobs:
   trigger-module-rest: # moduleA 혹은 moduleC 에 변경사항이 발생한 경우
 #    rules:
     runs-on: ubuntu-latest
     steps:
+      - name: ready
+
+        run: |
+          echo "ready"
+          echo $(github.event.head_commit.modified)
       - name: Trigger Jenkins Job for Module A
         if: ${{ contains(github.event.head_commit.modified, 'src/module-rest/')
           || contains(github.event.head_commit.modified, 'src/module-sub-rest/')
