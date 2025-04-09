@@ -12,6 +12,10 @@ jobs:
 #    rules:
     runs-on: ubuntu-latest
     steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+        with:
+          fetch-depth: 2 # 직전 커밋까지 가져오기
       - name: ready
         id : changed-files
         run: |
